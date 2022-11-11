@@ -1,0 +1,53 @@
+<header>
+    <nav>
+      <span class="logo" [routerLink]="['/main']">Ecommerce</span>
+      <div class="navBrand">
+        <button
+          *ngIf="!login"
+          class="nav-login btn btn-warning"
+          [routerLink]="['']"
+        >
+          Login
+        </button>
+        <button
+          *ngIf="!login"
+          class="nav-login btn btn-primary"
+          [routerLink]="['/register']"
+        >
+          Register
+        </button>
+        <ul *ngIf="login" class="navBrand-menu">
+          <li class="nav-item">
+            <button class="nav-toogle" id="title" (click)="showMenu()">
+              <span> Ivo</span>
+              <i class="fa fa-sort-down"></i>
+            </button>
+            <ul class="dropdownMenu" #myButton>
+              <li [routerLink]="['/main']">
+                <i class="fa fa-home"></i>
+                <span class="dropdown-item">Home</span>
+              </li>
+              <li
+                [routerLink]="['/upload']"
+                routerLinkActive="router-link-active"
+              >
+                <i class="fa fa-cloud-upload"></i>
+                <span class="dropdown-item">Upload a new product</span>
+              </li>
+              <li (click)="logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span class="dropdown-item">Log Out</span>
+              </li>
+            </ul>
+          </li>
+          <li class="cart" *ngIf="login" [routerLink]="['/cart']">
+            <i class="fa-solid fa-cart-shopping nav-link"></i>
+            <div class="badge bg-danger" style="font-size: 10px">
+              {{ cartItems }}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  

@@ -1,0 +1,55 @@
+<app-nav></app-nav>
+
+<div class="body">
+  <form [formGroup]="form">
+    <div class="register">
+      <h1>Register</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="user" autocomplete="off" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          autocomplete="off"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="register()">
+        Register
+      </button>
+      <div class="registerHere">
+        <p>
+          If you already logged
+          <span
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+            class="registerPath"
+            >click here!</span
+          >
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

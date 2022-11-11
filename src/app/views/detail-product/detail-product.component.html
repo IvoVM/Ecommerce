@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="detailProduct-container">
+  <div class="detailProduct">
+    <div class="product">
+      <div class="product-leftSide">
+        <div class="img-container">
+          <img [src]="this.image" />
+        </div>
+      </div>
+
+      <div class="product-rightSide">
+        <div class="product-rightSide__header">
+          <span class="product-name">{{ product.title }}</span>
+          <span class="product-price">${{ product.price }}</span>
+        </div>
+        <div class="product-rating">
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star-half-alt"></i></span>
+          <span>(250 ratings)</span>
+        </div>
+        <p>{{ product.description }}</p>
+        <div class="btn">
+          <button (click)="addToCart(this.product)">
+            <i class="fa fa-shopping-cart"> </i> <span>Add To Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

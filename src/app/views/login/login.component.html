@@ -1,0 +1,54 @@
+<app-nav></app-nav>
+<div class="body">
+  <form [formGroup]="form">
+    <div class="login">
+      <h1>Login</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Email</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="email"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          autocomplete="off"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }} </mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="login()" *ngIf="load">
+        Login
+      </button>
+      <mat-spinner *ngIf="!load" [diameter]="40" class="spinner"></mat-spinner>
+
+      <div class="registerHere" *ngIf="load">
+        <p>
+          If you need to register
+          <span
+            [routerLink]="['/register']"
+            routerLinkActive="router-link-active"
+            class="registerPath"
+            >click here!</span
+          >
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+
+

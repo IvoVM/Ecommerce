@@ -1,0 +1,15 @@
+.loadingScreen-container {
+    height: 100%;
+    width: 100%;
+    background-color: #fff159;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-spinner {
+    color: #fff !important;
+    left: 140px;
+    height: 2rem;
+  }
+  

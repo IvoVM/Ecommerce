@@ -1,0 +1,75 @@
+app-card,
+app-cards-in-existence {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-searcher {
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  width: 600px;
+}
+
+input {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  height: 39px;
+  padding: 7px 60px 9px 15px;
+  border-radius: 2px;
+  background-color: #fff;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  outline: none;
+  flex-grow: 1;
+}
+
+form button {
+  background-image: none;
+  height: 39px;
+  padding-top: 2px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  border-radius: 0 2px 2px 0;
+  flex-basis: 46px;
+}
+
+form button::before {
+  content: "";
+  display: block;
+  height: 26px;
+  border-left: 1px solid #e6e6e6;
+  position: absolute;
+}
+
+.main-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 800px) {
+  form button::before {
+    display: none;
+  }
+
+  form button {
+    border: 1px solid #333;
+    padding: 7px 12px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .main-cards__grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
