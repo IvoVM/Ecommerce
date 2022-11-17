@@ -8,7 +8,7 @@ export class CardsService {
 
   cards = [
     {
-      _id: '6333820e8456f600165dc8a8',
+      _id: '1',
       description: '1 Litro C/manija 24hs Frio/calor',
       title: 'Termo Stanley Classic',
       price: '240',
@@ -18,7 +18,7 @@ export class CardsService {
       undeleteable:true
     },
     {
-      _id: '6333820e8456f600165dc8a8',
+      _id: '2',
       description: 'Tazas con frase',
       title: 'Tazas Frases',
       price: '10',
@@ -28,7 +28,7 @@ export class CardsService {
       undeleteable:true
     },
     {
-      _id: '6333820e8456f600165dc8a8',
+      _id: '3',
       description: 'oreo cookies',
       title: 'oreo',
       price: '5',
@@ -39,7 +39,7 @@ export class CardsService {
       undeleteable:true
     },
     {
-      _id: '6333820e8456f600165dc8a8',  
+      _id: '4',  
       description: 'coca cola,coca zero or coca cola ligth',
       title: 'coca cola',
       price: '20',

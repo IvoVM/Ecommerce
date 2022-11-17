@@ -1,3 +1,4 @@
+import { CardsService } from './../../services/cards.service';
 import { AddCartService } from './../../services/add-cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,8 +10,8 @@ import { Component, OnInit, Pipe } from '@angular/core';
   styleUrls: ['./detail-product.component.css'],
 })
 export class DetailProductComponent implements OnInit {
+  public itemsList: any = [];
   public id: any;
-  public respuesta: any;
   public image: any = 'assets/images/no-img.jpg';
   public a: any;
 
@@ -25,8 +26,7 @@ export class DetailProductComponent implements OnInit {
     private route: ActivatedRoute,
     private ProductsService: ProductsService,
     private CartService: AddCartService,
-
-
+    private UndeletableCards: CardsService
   ) {}
 
   ngOnInit(): void {
@@ -37,22 +37,22 @@ export class DetailProductComponent implements OnInit {
   }
   cargarData(id: number) {
     this.ProductsService.getAll(id).subscribe((res) => {
-      res.map((a: any, index: number) => {
+      this.itemsList = res.concat(this.UndeletableCards.cards);
+      this.itemsList.map((a: any, index: number) => {
         if (id === a._id) {
           this.product = a;
-          this.product.quantity=1;
-          this.product.photo=this.product.photo.replace(/&#x2F;/gi, '/');
-          this.product.total=a.price
-          this.image = this.product.photo
+          this.product.quantity = 1;
+          this.product.total = a.price;
+          if (this.product._id.length > 1) {
+            this.image = this.product.photo.replace(/&#x2F;/gi, '/');
+          } else {
+            this.image = this.product.photo;
+          }
         }
       });
     });
   }
   public addToCart(data: any) {
     this.CartService.addToCart(data);
-  }
-  public deleteProduct(): void {
-    this.ProductsService.delete(this.product._id).subscribe();
-    console.log('borrado');
   }
 }
