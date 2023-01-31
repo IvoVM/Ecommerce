@@ -31,9 +31,11 @@ export class PersonalCartComponent implements OnInit {
   }
 
   minus(item: any) {
-    item.quantity = item.quantity - 1;
-    this.grandTotal = this.cartService.getTotalPrice();
-    this.taxes = this.grandTotal * 0.05;
+    if (item.quantity > 1) {
+      item.quantity = item.quantity - 1;
+      this.grandTotal = this.cartService.getTotalPrice();
+      this.taxes = this.grandTotal * 0.05;
+    }
   }
 
   plus(item: any) {
