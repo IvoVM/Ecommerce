@@ -2,7 +2,7 @@
     <app-loading-screen></app-loading-screen>
   </div>
   
-  <div *ngIf="showMain">
+  <div>
     <app-nav></app-nav>
     <div class="main container-fluid">
       <div class="main-section__grid row">
@@ -17,7 +17,7 @@
   
   <!-- Error page -->
   
-  <div class="errorPage" *ngIf="showError">
+  <!-- <div class="errorPage" *ngIf="showError">
     <app-nav></app-nav>
     <div class="errorPage-Message">
       <span>An error has ocurred...</span>
@@ -25,5 +25,5 @@
       <span *ngIf="logoutError">Error 401(Unauthorized).Please log out, then login again.</span>
     </div>
     <app-footer></app-footer>
-  </div>
+  </div> -->
   

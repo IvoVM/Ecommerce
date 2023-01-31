@@ -1,0 +1,8 @@
+{
+    "/apidemo/*":{
+        "target": "https://ivo-ecommerce-backend.herokuapp.com/",
+        "secure": true,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

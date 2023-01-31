@@ -103,3 +103,16 @@ nav {
   @media (max-width: 992px) {
   }
   
+  /*Serverless */
+
+.upload-no-server{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+.upload-no-server i{
+  font-size: 25px;
+}
+

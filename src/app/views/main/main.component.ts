@@ -4,7 +4,6 @@ import {
   ElementRef,
   Renderer2,
   ViewChild,
-  AfterContentInit,
 } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -26,15 +25,15 @@ export class MainComponent implements OnInit {
     private renderer: Renderer2
   ) {}
   ngOnInit(): void {
-    this.productsService.getAll(1).subscribe(
-      (res) => {
+    this.productsService.getAll(1).subscribe({
+      next: (res) => {
         this.renderer.addClass(
           this.loadingScreen.nativeElement,
           'loadingScreenClose'
         );
         this.showMain = true;
       },
-      (err) => {
+      error: (err) => {
         this.renderer.addClass(
           this.loadingScreen.nativeElement,
           'loadingScreenClose'
@@ -43,8 +42,9 @@ export class MainComponent implements OnInit {
           this.showMain = false;
           this.showError = true;
           this.logoutError = true;
+         
         }
-      }
-    );
+      },
+    });
   }
 }

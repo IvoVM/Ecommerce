@@ -32,27 +32,43 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap;
-      this.cargarData(params.variable);
+      // this.cargarData(params.variable);
+      this.noServer(params);
     });
   }
-  cargarData(id: number) {
-    this.ProductsService.getAll(id).subscribe((res) => {
-      this.itemsList = res.concat(this.UndeletableCards.cards);
-      this.itemsList.map((a: any, index: number) => {
-        if (id === a._id) {
-          this.product = a;
-          this.product.quantity = 1;
-          this.product.total = a.price;
-          if (this.product._id.length > 1) {
-            this.image = this.product.photo.replace(/&#x2F;/gi, '/');
-          } else {
-            this.image = this.product.photo;
-          }
-        }
-      });
-    });
-  }
+  // cargarData(id: number) {
+  //   this.ProductsService.getAll(id).subscribe((res) => {
+  //     this.itemsList = res.concat(this.UndeletableCards.cards);
+  //     this.itemsList.map((a: any, index: number) => {
+  //       if (id === a._id) {
+  //         this.product = a;
+  //         this.product.quantity = 1;
+  //         this.product.total = a.price;
+  //         if (this.product._id.length > 1) {
+  //           this.image = this.product.photo.replace(/&#x2F;/gi, '/');
+  //         } else {
+  //           this.image = this.product.photo;
+  //         }
+  //       }
+  //     });
+  //   });
+  // }
   public addToCart(data: any) {
     this.CartService.addToCart(data);
+  }
+  private noServer(param: any) {
+    this.itemsList = this.UndeletableCards.cards;
+    this.itemsList.map((a: any, index: number) => {
+      if (param.variable === a._id) {
+        this.product = a;
+        this.product.quantity = 1;
+        this.product.total = a.price;
+        if (this.product._id.length > 1) {
+          this.image = this.product.photo.replace(/&#x2F;/gi, '/');
+        } else {
+          this.image = this.product.photo;
+        }
+      }
+    });
   }
 }

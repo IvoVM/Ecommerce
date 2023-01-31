@@ -1,3 +1,4 @@
+import { CardsService } from './../../services/cards.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../services/authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -24,7 +25,8 @@ export class NewUploadComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private undeletableCards: CardsService
   ) {
     this.form = this.fb.group({
       productImg: [''],
@@ -44,20 +46,23 @@ export class NewUploadComponent implements OnInit {
       price: this.form.value.productPrice,
       photo: this.form.value.productImg,
       description: this.form.value.productDescription,
-      //categorie:this.productCategorie,
     };
-    this.productsService.create(newProduct).subscribe(
-      (res) => {
-        this.wellSnackBar();
-        console.log('subido con exito');
-        this.form.reset();
-      },
-      (err) => {
-        this.errorMessage = err.error.message;
-        this.errorSnackBar();
-        console.log('error al subir producto');
-      }
-    );
+    this.noServer(newProduct);
+    this.wellSnackBar;
+    this.form.reset();
+
+    // this.productsService.create(newProduct).subscribe({
+    //   next: (res) => {
+    //     this.wellSnackBar();
+    //     console.log('subido con exito');
+    //     this.form.reset();
+    //   },
+    //   error: (error) => {
+    //     this.errorMessage = error.error.message;
+    //     this.errorSnackBar();
+    //     console.log('error al subir producto');
+    //   },
+    // });
   }
 
   public errorSnackBar() {
@@ -65,10 +70,12 @@ export class NewUploadComponent implements OnInit {
       duration: this.snackbarDurationInSeconds * 1000,
     });
   }
-
   public wellSnackBar() {
     this._snackBar.open(`Subido con éxito`, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });
+  }
+  public noServer(newCard: any) {
+    this.undeletableCards.cards.push(newCard);
   }
 }

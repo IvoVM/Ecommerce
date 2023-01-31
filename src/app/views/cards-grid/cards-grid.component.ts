@@ -1,13 +1,15 @@
 import { CardsService } from './../../services/cards.service';
 import { ProductsService } from './../../services/products.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cards-grid',
   templateUrl: './cards-grid.component.html',
   styleUrls: ['./cards-grid.component.css'],
 })
-export class CardsGridComponent implements OnInit {
+export class CardsGridComponent implements OnInit, OnDestroy {
+  postSubscription!: Subscription;
   constructor(
     private productsService: ProductsService,
     private UndeletableCards: CardsService
@@ -20,11 +22,11 @@ export class CardsGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.merchCards = this.merchCards.concat(this.UndeletableCards.cards);
   }
 
   public getAllProducts(): void {
-    // this.cardsInExistance = this.UndeletableCards.cards;
-    this.productsService.getAll(1).subscribe((data) => {
+    this.postSubscription = this.productsService.getAll(1).subscribe((data) => {
       this.merchCards = data.map(
         (e: {
           photo: string;
@@ -38,9 +40,8 @@ export class CardsGridComponent implements OnInit {
         }
       );
       this.merchCards.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: a.price,undeleteable:false });
+        Object.assign(a, { quantity: 1, total: a.price, undeleteable: false });
       });
-      this.merchCards=this.merchCards.concat(this.UndeletableCards.cards);
       console.log(this.merchCards);
     });
   }
@@ -59,6 +60,7 @@ export class CardsGridComponent implements OnInit {
       }
     );
   }
+  ngOnDestroy() {
+    this.postSubscription.unsubscribe();
+  }
 }
-
-

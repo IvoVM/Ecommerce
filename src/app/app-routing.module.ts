@@ -29,13 +29,11 @@ const routes: Routes = [
   {
     path: 'upload',
     component: NewUploadComponent,
-    canActivate: [VigilanteGuard],
   },
   {
     path: 'cart',
     component: PersonalCartComponent,
-    canActivate: [VigilanteGuard],
-  },
+   },
 
   {
     path: ':variable',

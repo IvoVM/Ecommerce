@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {});
   }
   public register() {
     this.errorMessage = null;
@@ -35,16 +34,17 @@ export class RegisterComponent implements OnInit {
       password: this.form.value.password,
       userName: this.form.value.user,
     };
-    this.authenticationService.register(body).subscribe(
-      (res) => {
+    
+    this.authenticationService.register(body).subscribe({
+      next: (res) => {
         console.log('register correctamente');
         this.authenticationService.user = res;
         this.router.navigateByUrl('/main');
       },
-      (err) => {
-        this.errorMessage = err.error.message;
+      error: (error) => {
+        this.errorMessage = error.error.message;
         console.log('register error');
-      }
-    );
+      },
+    });
   }
 }
