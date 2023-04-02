@@ -16,9 +16,9 @@ export class CardsGridComponent implements OnInit, OnDestroy {
   ) {}
   merchCards: any = [];
   cardsInExistance: any = [];
-  public loading!: false;
-  public searchText: string = '';
-  public card: any;
+  private loading!: false;
+  public searchText: any = '';
+  private card: any;
 
   ngOnInit(): void {
     this.getAllProducts();

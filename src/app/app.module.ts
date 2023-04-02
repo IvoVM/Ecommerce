@@ -26,7 +26,6 @@ import { CardsGridComponent } from './views/cards-grid/cards-grid.component';
 import { DetailProductComponent } from './views/detail-product/detail-product.component';
 import { NavComponent } from './views/nav/nav.component';
 import { CardComponent } from './views/card/card.component';
-import { RecargaDirective } from './directives/recarga.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { RecargaDirective } from './directives/recarga.directive';
     DetailProductComponent,
     NavComponent,
     CardComponent,
-    RecargaDirective,
   ],
   imports: [
     BrowserModule,
