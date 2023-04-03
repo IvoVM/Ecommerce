@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public form!: FormGroup;
   snackbarDurationInSeconds = 5;
   public load!: boolean;
-  @Input() diameter?: number;
+  @Input() diameter: number = 40;
 
   constructor(
     private fb: FormBuilder,
@@ -33,48 +33,46 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.load = true;
   }
-  login() {
-    const data = {
-      email: this.form.value.email,
-      password: this.form.value.password,
-    };
-    this.noServer(data);
-    
-  }
-
   // login() {
-  //   this.load = false;
-  //   this.errorMessage = null;
-  //   const body = {
+  //   const data = {
   //     email: this.form.value.email,
   //     password: this.form.value.password,
   //   };
-
-  //   this.authenticationService.login(body).subscribe({
-  //     next: ({ data }) => {
-  //       localStorage.setItem('user', JSON.stringify(data));
-  //       this.authenticationService.user = data;
-  //       this.authenticationService.getLoggedInUser(data.token);
-  //       this.router.navigateByUrl('/main');
-  //     },
-  //     error: (error) => {
-  //       this.errorMessage = error.error.message;
-  //       this.openSnackBar();
-  //       this.load = true;
-  //     },
-  //   });
+  //   this.noServer(data);
+    
   // }
+
+  login() {
+    this.load = false;
+    this.errorMessage = null;
+    const body = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+    };
+    this.authenticationService.login(body).subscribe({
+      next: (res) => {
+        console.log(res)
+        sessionStorage.setItem('token', JSON.stringify(res.token));
+        this.authenticationService.getLoggedInUser(res.token);
+        this.router.navigateByUrl('/main');
+      },
+      error: (error) => {
+        this.errorMessage = error.error.message;
+        this.openSnackBar();
+        this.load = true;
+      },
+    });
+  }
   public openSnackBar() {
     this._snackBar.open(`email o contraseña incorrectos`, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });
   }
-  private noServer(data:any){
-    console.log(typeof data)
-    localStorage.setItem('user', JSON.stringify(data));
-    this.load = false;
-    this.errorMessage = null;
-    this.router.navigateByUrl('/main');
-
-  }
+  // private noServer(data:any){
+  //   console.log(typeof data)
+  //   localStorage.setItem('user', JSON.stringify(data));
+  //   this.load = false;
+  //   this.errorMessage = null;
+  //   this.router.navigateByUrl('/main');
+  // }
 }

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VigilanteGuard implements CanActivate {
-  token = localStorage.getItem('token');
+  token = sessionStorage.getItem('token');
   constructor(private router: Router) {}
   redirect(flag: boolean) {
     if (!flag) {
@@ -30,7 +30,7 @@ export class VigilanteGuard implements CanActivate {
     if (!this.token) {
       this.redirect(false);
     } else {
-      this.redirect(true);
+      return true;
     }
     return false;
   }
