@@ -25,10 +25,13 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivate:[VigilanteGuard]
   },
   {
     path: 'upload',
     component: NewUploadComponent,
+    canActivate:[VigilanteGuard]
+
   },
   {
     path: 'cart',
