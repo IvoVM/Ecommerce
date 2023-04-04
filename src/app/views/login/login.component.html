@@ -4,11 +4,11 @@
     <div class="login">
       <h1>Login</h1>
       <mat-form-field appearance="fill">
-        <mat-label>Enter Email</mat-label>
+        <mat-label>Enter Username</mat-label>
         <input
           matInput
           type="text"
-          formControlName="email"
+          formControlName="username"
           autocomplete="off"
         />
       </mat-form-field>
@@ -34,7 +34,7 @@
       <button mat-raised-button color="primary" (click)="login()" *ngIf="load">
         Login
       </button>
-      <mat-spinner *ngIf="!load" [diameter]="40" class="spinner"></mat-spinner>
+      <mat-spinner *ngIf="!load" [diameter] class="spinner"></mat-spinner>
 
       <div class="registerHere" *ngIf="load">
         <p>
