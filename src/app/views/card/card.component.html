@@ -1,40 +1,39 @@
 <div class="complete-card" *ngIf="data">
-    <div class="product-card">
-      <div *ngIf="!data.undeleteable" class="product-card__newProduct">
-        <div class="badge">New Product</div>
-        <button (click)="deleteProduct()"><i class="fa fa-close"></i></button>
+  <div class="product-card" [routerLink]="['/detail-product', data._id]">
+    <div *ngIf="!data.undeleteable" class="product-card__newProduct">
+      <div class="badge">New Product</div>
+      <button (click)="deleteProduct()"><i class="fa fa-close"></i></button>
+    </div>
+    <div>
+      <div class="product-tumb">
+        <img [src]="data.img" />
       </div>
-      <div>
-        <div class="product-tumb" [routerLink]="['/', data._id]">
-          <img [src]="data.photo" />
+      <div class="product-details">
+        <div class="product-details_">
+          <span class="product-category">{{ data.categorie }}</span>
+          <div class="product-links">
+            <a
+              ><i
+                class="fa fa-shopping-cart"
+                #asCart
+                (click)="addToCart(data)"
+              ></i
+            ></a>
+          </div>
         </div>
-        <div class="product-details">
-          <div class="product-details_">
-            <span class="product-category">{{ data.categorie }}</span>
-            <div class="product-links">
-              <a
-                ><i
-                  class="fa fa-shopping-cart"
-                  #asCart
-                  (click)="addToCart(data)"
-                ></i
-              ></a>
-            </div>
+        <div class="product-details_">
+          <h4>
+            <a class="product-details__title">{{ data.title }}</a>
+          </h4>
+          <div class="product-price">
+            <small>${{ data.price }}</small>
           </div>
-          <div class="product-details_" [routerLink]="['/', data._id]">
-            <h4>
-              <a class="product-details__title">{{ data.title }}</a>
-            </h4>
-            <div class="product-price">
-              <small>${{ data.price }}</small>
-            </div>
-          </div>
-          <div class="product-detail__invisible" [routerLink]="['/', data._id]">
-            <p>{{ data.description }}</p>
-            <div class="product-bottom__details"></div>
-          </div>
+        </div>
+        <div class="product-detail__invisible" [routerLink]="['/', data._id]">
+          <p>{{ data.description }}</p>
+          <div class="product-bottom__details"></div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
