@@ -18,6 +18,11 @@ export class ProductsService {
   getAll(): Observable<any> {
     return this.http.get<defaultResponse>(`${environment.apiUrl}products`);
   }
+  getOne(id: string): Observable<any> {
+    return this.http.get<defaultResponse>(
+      `${environment.apiUrl}products/${id}`
+    );
+  }
 
   create(body: {
     title: string;
@@ -26,11 +31,11 @@ export class ProductsService {
     img: string;
     categorie: string;
   }): Observable<any> {
-    return this.http.post(`${environment.apiUrl}products`, body);
+    return this.http.post(`${environment.apiUrl}products/upload`, body);
   }
   delete(id: string): Observable<any> {
     return this.http.delete<defaultResponse>(
-      `${environment.apiUrl}api/products/${id}`
+      `${environment.apiUrl}products/${id}`
     );
   }
 }
