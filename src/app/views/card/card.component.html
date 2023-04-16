@@ -1,11 +1,11 @@
 <div class="complete-card" *ngIf="data">
-  <div class="product-card" [routerLink]="['/detail-product', data._id]">
+  <div class="product-card">
     <div *ngIf="!data.undeleteable" class="product-card__newProduct">
       <div class="badge">New Product</div>
       <button (click)="deleteProduct()"><i class="fa fa-close"></i></button>
     </div>
     <div>
-      <div class="product-tumb">
+      <div class="product-tumb" [routerLink]="['/detail-product', data._id]">
         <img [src]="data.img" />
       </div>
       <div class="product-details">
@@ -21,7 +21,7 @@
             ></a>
           </div>
         </div>
-        <div class="product-details_">
+        <div class="product-details_" [routerLink]="['/detail-product', data._id]">
           <h4>
             <a class="product-details__title">{{ data.title }}</a>
           </h4>
@@ -29,7 +29,7 @@
             <small>${{ data.price }}</small>
           </div>
         </div>
-        <div class="product-detail__invisible" [routerLink]="['/', data._id]">
+        <div class="product-detail__invisible" [routerLink]="['/detail-product', data._id]">
           <p>{{ data.description }}</p>
           <div class="product-bottom__details"></div>
         </div>
