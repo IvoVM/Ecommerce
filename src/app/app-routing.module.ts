@@ -7,6 +7,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: PersonalCartComponent,
+    component: ProfileComponent,
     canActivate: [VigilanteGuard],
   },
   {
