@@ -36,9 +36,8 @@ export class RegisterComponent implements OnInit {
       next: (res) => {
         console.log(res)
         console.log('register correctamente');
-        this.authenticationService.auth_token = res.token;
         sessionStorage.setItem('token', JSON.stringify(res.token));
-        this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('');
       },
       error: (error) => {
         this.errorMessage = error.error.message;
