@@ -16,11 +16,11 @@ export class AuthenticationService {
   register(body: { username: string; password: string }): Observable<any> {
     return this.http.post(environment.apiUrl + 'signup', body);
   }
-  getLoggedInUser(auth_token: String): Object {
+  getLoggedInUser(auth_token: String | null): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${auth_token}`,
+      'Authorization': `Bearer ${auth_token}`,
     });
-    return this.http.get(environment.apiUrl, { headers: headers });
+    return this.http.get(environment.apiUrl + 'me', { headers: headers });
   }
 }
