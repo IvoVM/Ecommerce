@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
     private renderer: Renderer2
   ) {}
   ngOnInit(): void {
-    this.productsService.getAll(1).subscribe({
+    this.productsService.getAll().subscribe({
       next: (res) => {
         this.renderer.addClass(
           this.loadingScreen.nativeElement,
