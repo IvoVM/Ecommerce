@@ -19,13 +19,14 @@ import { MainComponent } from './views/main/main.component';
 import { PersonalCartComponent } from './views/personal-cart/personal-cart.component';
 import { CategoriesListComponent } from './views/categories-list/categories-list.component';
 import { InterceptorService } from './services/interceptor.service';
-import { NewUploadComponent } from './views/new-upload/new-upload.component';
 import { LoadingScreenComponent } from './views/loading-screen/loading-screen.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { CardsGridComponent } from './views/cards-grid/cards-grid.component';
 import { DetailProductComponent } from './views/detail-product/detail-product.component';
 import { NavComponent } from './views/nav/nav.component';
 import { CardComponent } from './views/card/card.component';
+import { NewUploadComponent } from './views/new-upload/new-upload.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +36,14 @@ import { CardComponent } from './views/card/card.component';
     MainComponent,
     PersonalCartComponent,
     CategoriesListComponent,
-    NewUploadComponent,
     LoadingScreenComponent,
     FooterComponent,
     CardsGridComponent,
     DetailProductComponent,
     NavComponent,
     CardComponent,
+    NewUploadComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
