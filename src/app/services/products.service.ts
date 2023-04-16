@@ -29,7 +29,7 @@ export class ProductsService {
     price: number;
     description: string;
     img: string;
-    categorie: string;
+    category: string;
   }): Observable<any> {
     return this.http.post(`${environment.apiUrl}products/upload`, body);
   }
