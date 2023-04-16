@@ -12,11 +12,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VigilanteGuard implements CanActivate {
-  token = sessionStorage.getItem('token');
   constructor(private router: Router) {}
   redirect(flag: boolean) {
     if (!flag) {
-      this.router.navigateByUrl('');
+      console.log('No user specified');
+      this.router.navigateByUrl('/login');
     }
   }
   canActivate(
@@ -27,7 +27,8 @@ export class VigilanteGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.token) {
+   let token = sessionStorage.getItem('token');
+    if (token === null) {
       this.redirect(false);
     } else {
       return true;
