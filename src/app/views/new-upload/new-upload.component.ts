@@ -19,7 +19,7 @@ export class NewUploadComponent implements OnInit {
   public productPrice: number = 0;
   public productImg: string = '';
   public productDescription: string = '';
-  public productCategorie: string = '';
+  public productCategory: string = '';
 
   constructor(
     private productsService: ProductsService,
@@ -31,7 +31,7 @@ export class NewUploadComponent implements OnInit {
       productTitle: [''],
       productPrice: [''],
       productDescription: [''],
-      productCategorie: [''],
+      productCategory: [''],
     });
   }
 
@@ -44,7 +44,7 @@ export class NewUploadComponent implements OnInit {
       price: this.form.value.productPrice,
       img: this.form.value.productImg,
       description: this.form.value.productDescription,
-      categorie:this.form.value.productCategorie
+      category:this.form.value.productCategory
     };
 
     this.productsService.create(newProduct).subscribe({
