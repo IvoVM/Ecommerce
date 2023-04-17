@@ -8,6 +8,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './views/profile/profile.component';
+import {  DetailProductResolverService } from './resolvers/detail-product.resolver';
 
 const routes: Routes = [
   {
@@ -25,7 +26,6 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    canActivate: [VigilanteGuard],
   },
   {
     path: 'upload',
@@ -45,6 +45,17 @@ const routes: Routes = [
   {
     path: 'detail-product/:id',
     component: DetailProductComponent,
+    resolve:{
+      product:DetailProductResolverService 
+    }
+  },
+  {
+    path: 'product/:category',
+    component: MainComponent,
+  },
+  {
+    path: '**',
+    component: MainComponent,
   },
 ];
 
