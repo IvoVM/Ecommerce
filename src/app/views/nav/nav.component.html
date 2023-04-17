@@ -1,27 +1,27 @@
-<header>
-  <nav>
-    <span class="logo" [routerLink]="['']">Ecommerce</span>
-    <ul class="navBrand-menu">
-      <li
-        [routerLink]="['/profile']"
-        routerLinkActive="router-link-active"
-        class="nav-item"
-      >
-        <i class="fas fa-user-cog" style="color: white"></i>
-      </li>
-      <li
-        [routerLink]="['/upload']"
-        routerLinkActive="router-link-active"
-        class="nav-item"
-      >
-        <i class="fa fa-cloud-upload"></i>
-      </li>
-      <li class="nav-item" [routerLink]="['/cart']">
-        <i class="fa-solid fa-cart-shopping nav-link"></i>
-        <div class="badge bg-danger" style="font-size: 10px">
-          {{ cartItems }}
-        </div>
-      </li>
-    </ul>
-  </nav>
-</header>
+<mat-toolbar color="primary">
+  <span [routerLink]="['']" class="logo">Ecommerce</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <ul class="navBrand-menu">
+    <li
+      [routerLink]="['/profile']"
+      routerLinkActive="router-link-active"
+      class="nav-item"
+    >
+      <i class="fas fa-user-cog" style="color: white"></i>
+    </li>
+    <li
+      [routerLink]="['/upload']"
+      routerLinkActive="router-link-active"
+      class="nav-item"
+    >
+      <i class="fa fa-cloud-upload"></i>
+    </li>
+    <li class="nav-item" [routerLink]="['/cart']">
+      <i class="fa-solid fa-cart-shopping nav-link"></i>
+      <div class="badge bg-danger" style="font-size: 10px">
+        {{cartItems}}
+      </div>
+    </li>
+  </ul>
+</mat-toolbar>
