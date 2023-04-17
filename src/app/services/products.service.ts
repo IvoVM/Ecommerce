@@ -18,7 +18,7 @@ export class ProductsService {
   getAll(): Observable<any> {
     return this.http.get<defaultResponse>(`${environment.apiUrl}products`);
   }
-  getOne(id: string): Observable<any> {
+  getOne(id: string | null): Observable<any> {
     return this.http.get<defaultResponse>(
       `${environment.apiUrl}products/${id}`
     );
