@@ -7,6 +7,16 @@ import {
 } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 
+type Product = {
+  id: String;
+  description: String;
+  title: String;
+  price: String;
+  img: String;
+  quantity: Number;
+  undeleteable: boolean;
+  category: String;
+};
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -17,7 +27,7 @@ export class MainComponent implements OnInit {
   public showMain: boolean = false;
   public showError: boolean = false;
   public logoutError: boolean = false;
-  merchCards: any = [];
+  merchCards: Array<Product> = [];
   @ViewChild('loadingScreen') loadingScreen!: ElementRef;
 
   constructor(
@@ -42,7 +52,6 @@ export class MainComponent implements OnInit {
           this.showMain = false;
           this.showError = true;
           this.logoutError = true;
-         
         }
       },
     });

@@ -1,64 +1,43 @@
-import { CardsService } from './../../services/cards.service';
 import { ProductsService } from './../../services/products.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+ type Product = {
+  id: String;
+  description: String;
+  title: String;
+  price: String;
+  img: String;
+  quantity: Number;
+  undeleteable: boolean;
+  category: String;
+}
 @Component({
   selector: 'app-cards-grid',
   templateUrl: './cards-grid.component.html',
   styleUrls: ['./cards-grid.component.css'],
 })
-export class CardsGridComponent implements OnInit, OnDestroy {
+export class CardsGridComponent implements OnDestroy {
   postSubscription!: Subscription;
-  constructor(
-    private productsService: ProductsService,
-    private UndeletableCards: CardsService
-  ) {}
-  merchCards: any = [];
-  cardsInExistance: any = [];
-  private loading!: false;
-  public searchText: any = '';
-  private card: any;
-
-  ngOnInit(): void {
+  constructor(private productsService: ProductsService) {
     this.getAllProducts();
-    this.merchCards = this.merchCards.concat(this.UndeletableCards.cards);
   }
+  merchCards: Array<Product> = [];
+  public searchText: string = '';
 
   public getAllProducts(): void {
-    this.postSubscription = this.productsService.getAll(1).subscribe((data) => {
-      this.merchCards = data.map(
-        (e: {
-          photo: string;
-          description: string;
-          title: string;
-          price: number;
-          categorie: string;
-        }) => {
-          e.photo = e.photo.replace(/&#x2F;/gi, '/');
-          return e;
-        }
-      );
-      this.merchCards.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: a.price, undeleteable: false });
-      });
-      console.log(this.merchCards);
+    this.postSubscription = this.productsService.getAll().subscribe((data) => {
+      this.merchCards = data;
     });
   }
 
   get onSearchProduct() {
-    return this.merchCards.filter(
-      (merchCard: { title: string; description: string }) => {
-        return (
-          merchCard.title
-            .toLowerCase()
-            .includes(this.searchText.toLowerCase()) ||
-          merchCard.description
-            .toLowerCase()
-            .includes(this.searchText.toLowerCase())
-        );
-      }
-    );
+    return this.merchCards.filter((merchCard) => {
+      return (
+        merchCard.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        merchCard.category.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    });
   }
   ngOnDestroy() {
     this.postSubscription.unsubscribe();

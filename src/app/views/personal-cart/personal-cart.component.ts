@@ -1,13 +1,23 @@
 import { AddCartService } from './../../services/add-cart.service';
 import { Component , OnInit } from '@angular/core';
 
+type Product = {
+  id: String;
+  description: String;
+  title: String;
+  price: String;
+  img: String;
+  quantity: Number;
+  undeleteable: boolean;
+  category: String;
+};
 @Component({
   selector: 'app-personal-cart',
   templateUrl: './personal-cart.component.html',
   styleUrls: ['./personal-cart.component.css'],
 })
 export class PersonalCartComponent implements OnInit {
-  public products: Array<any> = [];
+  public products: Array<Product> = [];
   public grandTotal!: number;
   public taxes: number = 0;
 
