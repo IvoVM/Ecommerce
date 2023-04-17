@@ -1,23 +1,23 @@
 <div class="loadingScreen" #loadingScreen>
-    <app-loading-screen></app-loading-screen>
-  </div>
-  
-  <div>
-    <app-nav></app-nav>
-    <div class="main container-fluid">
-      <div class="main-section__grid row">
-        <app-categories-list
-          class="col-xl-2 col-lg-2 col-md-12"
-        ></app-categories-list>
-        <app-cards-grid class="col-xl-10 col-lg-10 col-md-12"></app-cards-grid>
-      </div>
+  <app-loading-screen></app-loading-screen>
+</div>
+
+<div>
+  <app-nav></app-nav>
+  <div class="main container-fluid">
+    <div class="main-section__grid row">
+      <app-categories-list
+        class="col-xl-2 col-lg-2 col-md-12"
+      ></app-categories-list>
+      <app-cards-grid class="col-xl-10 col-lg-10 col-md-12"></app-cards-grid>
     </div>
-    <app-footer></app-footer>
   </div>
-  
-  <!-- Error page -->
-  
-  <!-- <div class="errorPage" *ngIf="showError">
+  <app-footer></app-footer>
+</div>
+
+<!-- Error page -->
+
+<!-- <div class="errorPage" *ngIf="showError">
     <app-nav></app-nav>
     <div class="errorPage-Message">
       <span>An error has ocurred...</span>
@@ -26,4 +26,3 @@
     </div>
     <app-footer></app-footer>
   </div> -->
-  
