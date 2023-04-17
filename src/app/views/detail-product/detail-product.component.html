@@ -9,9 +9,11 @@
       </div>
       <div class="product-rightSide">
         <div class="product-rightSide__header">
-          <span class="product-name">{{ product.title }}</span>
-          <span class="product-price">${{ product.price }}</span>
+          <p class="product-name">{{ product.title }}</p>
+          <p class="product-price">${{ product.price }}</p>
         </div>
+        <p>{{ product.category | uppercase }}</p>
+
         <div class="product-rating">
           <span><i class="fa fa-star"></i></span>
           <span><i class="fa fa-star"></i></span>
