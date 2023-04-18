@@ -1,13 +1,13 @@
 import { AddCartService } from './../../services/add-cart.service';
-import { Component , OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 type Product = {
   id: String;
   description: String;
   title: String;
-  price: String;
+  price: number;
   img: String;
-  quantity: Number;
+  quantity: number;
   undeleteable: boolean;
   category: String;
 };

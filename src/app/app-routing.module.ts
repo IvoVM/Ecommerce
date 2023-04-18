@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './views/profile/profile.component';
 import {  DetailProductResolverService } from './resolvers/detail-product.resolver';
+import { CategoryComponent } from './views/category/category.component';
 
 const routes: Routes = [
   {
@@ -50,8 +51,9 @@ const routes: Routes = [
     }
   },
   {
-    path: 'product/:category',
-    component: MainComponent,
+    path: 'category/:category',
+    component: CategoryComponent,
+
   },
   {
     path: '**',

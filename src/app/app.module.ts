@@ -27,6 +27,7 @@ import { NavComponent } from './views/nav/nav.component';
 import { CardComponent } from './views/card/card.component';
 import { NewUploadComponent } from './views/new-upload/new-upload.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { CategoryComponent } from './views/category/category.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProfileComponent } from './views/profile/profile.component';
     NavComponent,
     CardComponent,
     NewUploadComponent,
-    ProfileComponent
+    ProfileComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

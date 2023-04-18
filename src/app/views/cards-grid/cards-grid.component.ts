@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
   id: String;
   description: String;
   title: String;
-  price: String;
+  price: Number;
   img: String;
   quantity: Number;
   undeleteable: boolean;

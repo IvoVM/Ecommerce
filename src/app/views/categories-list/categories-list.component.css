@@ -3,6 +3,9 @@
     color: #999;
     border-right: 1px solid rgb(116, 116, 116);
     max-width: 183px;
+    position: sticky;
+    left: 0;
+    top: 7rem;
   }
   
   .categories-list ul {

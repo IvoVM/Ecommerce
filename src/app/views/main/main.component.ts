@@ -11,7 +11,7 @@ type Product = {
   id: String;
   description: String;
   title: String;
-  price: String;
+  price: Number;
   img: String;
   quantity: Number;
   undeleteable: boolean;
@@ -41,7 +41,6 @@ export class MainComponent implements OnInit {
           this.loadingScreen.nativeElement,
           'loadingScreenClose'
         );
-        this.showMain = true;
       },
       error: (err) => {
         this.renderer.addClass(

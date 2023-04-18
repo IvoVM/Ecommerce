@@ -18,6 +18,11 @@ export class ProductsService {
   getAll(): Observable<any> {
     return this.http.get<defaultResponse>(`${environment.apiUrl}products`);
   }
+  getCategory(category: string | null): Observable<any> {
+    return this.http.get<defaultResponse>(
+      `${environment.apiUrl}products/category/${category}`
+    );
+  }
   getOne(id: string | null): Observable<any> {
     return this.http.get<defaultResponse>(
       `${environment.apiUrl}products/${id}`

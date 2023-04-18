@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         console.log(res);
         sessionStorage.setItem('token', JSON.stringify(res.token));
-        this.authenticationService.getLoggedInUser(res.token);
+        this.authenticationService.getLoggedInUser();
         this.router.navigateByUrl('');
       },
       error: (error) => {

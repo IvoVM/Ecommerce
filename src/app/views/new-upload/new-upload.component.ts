@@ -12,19 +12,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NewUploadComponent implements OnInit {
   public form: FormGroup;
-  public errorMessage?: any;
+  public errorMessage!: string;
   snackbarDurationInSeconds = 5;
-  token?: string;
-  public productTitle: string = '';
-  public productPrice: number = 0;
-  public productImg: string = '';
-  public productDescription: string = '';
-  public productCategory: string = '';
+  public productTitle = '';
+  public productPrice = 0;
+  public productImg = '';
+  public productDescription = '';
+  public productCategory = '';
 
   constructor(
     private productsService: ProductsService,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       productImg: [''],
@@ -37,14 +36,13 @@ export class NewUploadComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public uploadMerchProduct() {
-    this.errorMessage = null;
+  public upload() {
     const newProduct = {
       title: this.form.value.productTitle,
       price: this.form.value.productPrice,
       img: this.form.value.productImg,
       description: this.form.value.productDescription,
-      category:this.form.value.productCategory
+      category: this.form.value.productCategory,
     };
 
     this.productsService.create(newProduct).subscribe({
@@ -54,9 +52,9 @@ export class NewUploadComponent implements OnInit {
         this.form.reset();
       },
       error: (error) => {
+        console.log(error);
         this.errorMessage = error.error.message;
         this.errorSnackBar();
-        console.log('error al subir producto');
       },
     });
   }
@@ -71,5 +69,4 @@ export class NewUploadComponent implements OnInit {
       duration: this.snackbarDurationInSeconds * 1000,
     });
   }
-  
 }
