@@ -1,13 +1,6 @@
 import { AddCartService } from './../../services/add-cart.service';
 import { ProductsService } from 'src/app/services/products.service';
-import {
-  Component,
-  OnInit,
-  Input,
-  ViewChild,
-  ElementRef,
-  Renderer2,
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -15,13 +8,11 @@ import {
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  // @ViewChild ('#asCart', {static : false}) cart!:any;
   public newProduct: boolean = true;
   @Input() data?: any;
   cart: any[] = [];
 
   constructor(
-    private renderer2: Renderer2,
     private productSvc: ProductsService,
     private CartService: AddCartService
   ) {}

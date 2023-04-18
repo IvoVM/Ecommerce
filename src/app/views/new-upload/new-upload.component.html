@@ -30,13 +30,13 @@
             <div class="uploadForm-field">
               <p>Categorie</p>
               <select
-                formControlName="productCategorie"
-                bindon-ngModel="productCategorie"
+                formControlName="productCategory"
+                bindon-ngModel="productCategory"
               >
-                <option>Supermarket</option>
-                <option>Technology</option>
-                <option>Home and furnitures</option>
-                <option>Clothes</option>
+                <option>supermarket</option>
+                <option>technology</option>
+                <option>home and furnitures</option>
+                <option>clothes</option>
               </select>
             </div>
             <div class="uploadForm-field uploadForm-field__price">
@@ -63,7 +63,7 @@
               cols="10"
             ></textarea>
           </div>
-          <button class="uploadForm-btn" (click)="uploadMerchProduct()">
+          <button class="uploadForm-btn" (click)="upload()">
             Submit
           </button>
         </form>
@@ -76,7 +76,7 @@
           </div>
           <div class="product-details">
             <div style="display: flex; justify-content: space-between">
-              <span class="product-category">{{ productCategorie }}</span>
+              <span class="product-category">{{ productCategory }}</span>
               <div class="product-links">
                 <a><i class="fa fa-heart"></i></a>
                 <a><i class="fa fa-shopping-cart"></i></a>

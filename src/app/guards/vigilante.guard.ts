@@ -4,6 +4,7 @@ import {
   CanActivate,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -11,6 +12,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VigilanteGuard implements CanActivate {
+  constructor(private router: Router) {}
+  redirect(flag: boolean) {
+    if (!flag) {
+      console.log('No user specified');
+      this.router.navigateByUrl('/login');
+    }
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -19,17 +27,12 @@ export class VigilanteGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const nombre = localStorage.getItem('user');
-    if (nombre) {
-      let name = JSON.parse(nombre);
-      const token = name.token;
-      if (token) {
-        return true;
-      } else {
-        return false;
-      }
+   let token = sessionStorage.getItem('token');
+    if (token === null) {
+      this.redirect(false);
     } else {
-      return false;
+      return true;
     }
+    return false;
   }
 }

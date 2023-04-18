@@ -5,14 +5,16 @@ import { NewUploadComponent } from './views/new-upload/new-upload.component';
 import { MainComponent } from './views/main/main.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './views/profile/profile.component';
+import {  DetailProductResolverService } from './resolvers/detail-product.resolver';
+import { CategoryComponent } from './views/category/category.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: MainComponent,
   },
   {
     path: 'login',
@@ -29,15 +31,33 @@ const routes: Routes = [
   {
     path: 'upload',
     component: NewUploadComponent,
+    canActivate: [VigilanteGuard],
   },
   {
     path: 'cart',
     component: PersonalCartComponent,
-   },
-
+    canActivate: [VigilanteGuard],
+  },
   {
-    path: ':variable',
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [VigilanteGuard],
+  },
+  {
+    path: 'detail-product/:id',
     component: DetailProductComponent,
+    resolve:{
+      product:DetailProductResolverService 
+    }
+  },
+  {
+    path: 'category/:category',
+    component: CategoryComponent,
+
+  },
+  {
+    path: '**',
+    component: MainComponent,
   },
 ];
 

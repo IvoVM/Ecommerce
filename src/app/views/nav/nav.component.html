@@ -1,56 +1,27 @@
-<header>
-  <nav>
-    <span class="logo" [routerLink]="['/main']">Ecommerce</span>
-    <div class="navBrand">
-      <!-- <button
-          *ngIf="!login"
-          class="nav-login btn btn-warning"
-          [routerLink]="['']"
-        >
-          Login
-        </button>
-        <button
-          *ngIf="!login"
-          class="nav-login btn btn-primary"
-          [routerLink]="['/register']"
-        >
-          Register
-        </button> -->
-      <ul class="navBrand-menu">
-          <li [routerLink]="['/upload']" routerLinkActive="router-link-active" class="upload-no-server">
-            <i class="fa fa-cloud-upload"></i>
-          </li>
-       
-        <!-- <li class="nav-item">
-            <button class="nav-toogle" id="title" (click)="showMenu()">
-              <span> {{perfil-name}}</span>
-              <i class="fa fa-sort-down"></i>
-            </button>
-            <ul class="dropdownMenu" #myButton>
-              <li [routerLink]="['/main']">
-                <i class="fa fa-home"></i>
-                <span class="dropdown-item">Home</span>
-              </li>
-              <li
-                [routerLink]="['/upload']"
-                routerLinkActive="router-link-active"
-              >
-                <i class="fa fa-cloud-upload"></i>
-                <span class="dropdown-item">Upload a new product</span>
-              </li>
-              <li (click)="logout()">
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <span class="dropdown-item">Log Out</span>
-              </li>
-            </ul>
-          </li> -->
-        <li class="cart" [routerLink]="['/cart']">
-          <i class="fa-solid fa-cart-shopping nav-link"></i>
-          <div class="badge bg-danger" style="font-size: 10px">
-            {{ cartItems }}
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<mat-toolbar color="primary">
+  <span [routerLink]="['']" class="logo">Ecommerce</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <ul class="navBrand-menu">
+    <li
+      [routerLink]="['/profile']"
+      routerLinkActive="router-link-active"
+      class="nav-item"
+    >
+      <i class="fas fa-user-cog" style="color: white"></i>
+    </li>
+    <li
+      [routerLink]="['/upload']"
+      routerLinkActive="router-link-active"
+      class="nav-item"
+    >
+      <i class="fa fa-cloud-upload"></i>
+    </li>
+    <li class="nav-item" [routerLink]="['/cart']">
+      <i class="fa-solid fa-cart-shopping nav-link"></i>
+      <div class="badge bg-danger" style="font-size: 10px">
+        {{cartItems}}
+      </div>
+    </li>
+  </ul>
+</mat-toolbar>

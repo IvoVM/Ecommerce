@@ -19,27 +19,25 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
       user: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   public register() {
     this.errorMessage = null;
     const body = {
-      email: this.form.value.email,
       password: this.form.value.password,
-      userName: this.form.value.user,
+      username: this.form.value.user,
     };
-    
+
     this.authenticationService.register(body).subscribe({
       next: (res) => {
+        console.log(res)
         console.log('register correctamente');
-        this.authenticationService.user = res;
-        this.router.navigateByUrl('/main');
+        sessionStorage.setItem('token', JSON.stringify(res.token));
+        this.router.navigateByUrl('');
       },
       error: (error) => {
         this.errorMessage = error.error.message;

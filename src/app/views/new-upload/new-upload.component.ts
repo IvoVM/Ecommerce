@@ -1,6 +1,5 @@
-import { CardsService } from './../../services/cards.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { ProductsService } from '../../services/products.service';
@@ -13,56 +12,51 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NewUploadComponent implements OnInit {
   public form: FormGroup;
-  public errorMessage?: any;
+  public errorMessage!: string;
   snackbarDurationInSeconds = 5;
-  token?: string;
-  public productTitle: string = '';
-  public productPrice: number = 0;
-  public productImg: string = '';
-  public productDescription: string = '';
-  public productCategorie: string = '';
+  public productTitle = '';
+  public productPrice = 0;
+  public productImg = '';
+  public productDescription = '';
+  public productCategory = '';
 
   constructor(
     private productsService: ProductsService,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private undeletableCards: CardsService
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       productImg: [''],
       productTitle: [''],
       productPrice: [''],
       productDescription: [''],
-      productCategorie: [''],
+      productCategory: [''],
     });
   }
 
   ngOnInit(): void {}
 
-  public uploadMerchProduct() {
-    this.errorMessage = null;
+  public upload() {
     const newProduct = {
       title: this.form.value.productTitle,
       price: this.form.value.productPrice,
-      photo: this.form.value.productImg,
+      img: this.form.value.productImg,
       description: this.form.value.productDescription,
+      category: this.form.value.productCategory,
     };
-    this.noServer(newProduct);
-    this.wellSnackBar;
-    this.form.reset();
 
-    // this.productsService.create(newProduct).subscribe({
-    //   next: (res) => {
-    //     this.wellSnackBar();
-    //     console.log('subido con exito');
-    //     this.form.reset();
-    //   },
-    //   error: (error) => {
-    //     this.errorMessage = error.error.message;
-    //     this.errorSnackBar();
-    //     console.log('error al subir producto');
-    //   },
-    // });
+    this.productsService.create(newProduct).subscribe({
+      next: (res) => {
+        this.wellSnackBar();
+        console.log('subido con exito');
+        this.form.reset();
+      },
+      error: (error) => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.errorSnackBar();
+      },
+    });
   }
 
   public errorSnackBar() {
@@ -74,8 +68,5 @@ export class NewUploadComponent implements OnInit {
     this._snackBar.open(`Subido con éxito`, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });
-  }
-  public noServer(newCard: any) {
-    this.undeletableCards.cards.push(newCard);
   }
 }

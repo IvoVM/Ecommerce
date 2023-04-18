@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://ivo-ecommerce-backend.herokuapp.com/"
+  // apiUrl: "https://ivo-ecommerce-backend.herokuapp.com/"
+  apiUrl:'http://localhost:3000/'
 
 };
 
