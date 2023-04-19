@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private _snackBar: MatSnackBar,
+    private cookieSvc:CookieService
 
   ) {
     this.form = this.fb.group({
@@ -39,7 +41,7 @@ export class RegisterComponent implements OnInit {
     this.authenticationService.register(body).subscribe({
       next: (res) => {
         console.log('register correctamente');
-        sessionStorage.setItem('token', JSON.stringify(res.token));
+        this.cookieSvc.set('token',res.token)
         this.router.navigateByUrl('');
         this.load = false;
       },

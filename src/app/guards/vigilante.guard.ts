@@ -6,13 +6,14 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VigilanteGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router,private cookieSvc:CookieService) {}
   redirect(flag: boolean) {
     if (!flag) {
       console.log('No user specified');
@@ -27,8 +28,8 @@ export class VigilanteGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-   let token = sessionStorage.getItem('token');
-    if (token === null) {
+   let token = this.cookieSvc.get('token');
+    if (!token) {
       this.redirect(false);
     } else {
       return true;
