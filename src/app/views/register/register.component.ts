@@ -1,7 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -10,13 +11,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   hide = true;
-  errorMessage: any;
   public form!: FormGroup;
+  public load = false;
+
   constructor(
     private fb: FormBuilder,
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
+
   ) {
     this.form = this.fb.group({
       user: ['', Validators.required],
@@ -26,23 +29,31 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
   public register() {
-    this.errorMessage = null;
+    this.load = true;
     const body = {
-      password: this.form.value.password,
       username: this.form.value.user,
+      password: this.form.value.password,
     };
+    console.log(body);
 
     this.authenticationService.register(body).subscribe({
       next: (res) => {
-        console.log(res)
         console.log('register correctamente');
         sessionStorage.setItem('token', JSON.stringify(res.token));
         this.router.navigateByUrl('');
+        this.load = false;
       },
       error: (error) => {
-        this.errorMessage = error.error.message;
-        console.log('register error');
+        this.openSnackBar('Username already taken');
+        this.load = false;
+        console.log('register error', error);
       },
+    });
+  }
+
+  openSnackBar(msg: string) {
+    this._snackBar.open(msg, 'Cerrar', {
+      duration: 4000,
     });
   }
 }

@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       },
     });
   }
-  public openSnackBar(msg: string) {
+   openSnackBar(msg: string) {
     this._snackBar.open(msg, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });

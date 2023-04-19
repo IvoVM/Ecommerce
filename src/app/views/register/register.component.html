@@ -1,8 +1,7 @@
 <app-nav></app-nav>
-
-<div class="body">
-  <form [formGroup]="form">
-    <div class="register">
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <form [formGroup]="form" class="p-2">
+    <div class="register text-center">
       <h1>Register</h1>
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
@@ -27,16 +26,23 @@
         </button>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="register()">
+      <button *ngIf="!load"
+        mat-raised-button
+        color="primary"
+        (click)="register()"
+        class="text-center"
+      >
         Register
       </button>
-      <div class="registerHere">
+      <mat-spinner *ngIf="load" diameter="40" class="spinner"></mat-spinner>
+
+      <div class="mt-4">
         <p>
           If you already logged
           <span
             [routerLink]="['/login']"
             routerLinkActive="router-link-active"
-            class="registerPath"
+            class="registerPath p-2"
             >click here!</span
           >
         </p>
