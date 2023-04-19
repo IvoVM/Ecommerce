@@ -1,35 +1,18 @@
-<div class="complete-card" *ngIf="data">
-  <div class="product-card">
-    <div>
-      <div class="product-tumb" [routerLink]="['/detail-product', data._id]">
-        <img [src]="data.img" />
-      </div>
-      <div class="product-details">
-        <div class="product-details_">
-          <span class="product-category">{{ data.category }}</span>
-          <div class="product-links">
-            <a
-              ><i
-                class="fa fa-shopping-cart"
-                #asCart
-                (click)="addToCart(data)"
-              ></i
-            ></a>
-          </div>
-        </div>
-        <div class="product-details_" [routerLink]="['/detail-product', data._id]">
-          <h4>
-            <a class="product-details__title">{{ data.title }}</a>
-          </h4>
-          <div class="product-price">
-            <small>${{ data.price }}</small>
-          </div>
-        </div>
-        <div class="product-detail__invisible" [routerLink]="['/detail-product', data._id]">
-          <p>{{ data.description }}</p>
-          <div class="product-bottom__details"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-card class="example-card">
+  <mat-card-header [routerLink]="['/detail-product', data._id]">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ data.title }}</mat-card-title>
+    <mat-card-subtitle>{{ data.category }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [routerLink]="['/detail-product', data._id]" [src]="data.img" alt="Photo of a Shiba Inu" />
+  <mat-card-content [routerLink]="['/detail-product', data._id]">
+    <p>
+      {{ data.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="addToCart(data)" class="btn btn-warning">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+  </mat-card-actions>
+</mat-card>

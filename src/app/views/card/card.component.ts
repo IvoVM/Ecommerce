@@ -1,6 +1,6 @@
 import { AddCartService } from './../../services/add-cart.service';
-import { ProductsService } from 'src/app/services/products.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-card',
@@ -8,21 +8,24 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  public newProduct: boolean = true;
   @Input() data?: any;
   cart: any[] = [];
 
   constructor(
-    private productSvc: ProductsService,
-    private CartService: AddCartService
+    private CartService: AddCartService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
   public addToCart(data: any) {
     this.CartService.addToCart(data);
+    this.openSnackBar(data.title);
   }
-  public deleteProduct(): void {
-    this.productSvc.delete(this.data._id).subscribe();
-    console.log('borrado');
+  
+
+  public openSnackBar(name: string) {
+    this._snackBar.open(`El producto ${name} fue agregado al carro`, 'Cerrar', {
+      duration: 5000,
+    });
   }
 }
