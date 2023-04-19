@@ -1,10 +1,9 @@
 <app-nav></app-nav>
-<div class="body">
-  <form [formGroup]="form">
-    <div class="login">
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <form [formGroup]="form" class="p-2">
+    <div class="login text-center">
       <h1>Login</h1>
       <p>Some routes require a user account</p>
-
       <mat-form-field appearance="fill">
         <mat-label>Enter Username</mat-label>
         <input
@@ -33,26 +32,29 @@
         </button>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="login()" *ngIf="load">
+      <button
+        class="text-center"
+        mat-raised-button
+        color="primary"
+        (click)="login()"
+        *ngIf="load"
+      >
         Login
       </button>
       <mat-spinner *ngIf="!load" diameter="40" class="spinner"></mat-spinner>
 
-      <div class="registerHere" *ngIf="load">
+      <div class="mt-4" *ngIf="load">
         <p>
           If you need to register
           <span
             [routerLink]="['/register']"
             routerLinkActive="router-link-active"
-            class="registerPath"
+            class="registerPath p-1"
             >click here!</span
           >
         </p>
       </div>
     </div>
-    
   </form>
-  
 </div>
 <app-footer></app-footer>
-

@@ -1,36 +1,19 @@
-.body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .login {
-    width: 100%;
-    max-width: 330px;
-    text-align: center;
-  }
-  .login mat-form-field {
-    width: 80%;
-  }
-  
-  .login button {
-    width: 80%;
-    text-align: center;
-  }
-  .registerHere {
-    margin-top: 1rem;
-  }
-  .registerPath {
-    cursor: pointer;
-    background-color: #3f51b5;
-    color: white;
-    border-radius: 2rem;
-    padding: 0.5rem;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .spinner {
-    left: 9rem;
-  }
-  
+.login {
+  max-width: 330px;
+}
+.login mat-form-field,
+.login button {
+  width: 80%;
+}
+.registerPath {
+  cursor: pointer;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 2rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.spinner {
+  left: 9rem;
+}

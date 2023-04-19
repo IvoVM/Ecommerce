@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.load = true;
+    this.openSnackBar('you need to have an account to access that route ');
   }
 
   login() {
@@ -49,13 +50,13 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error.error.message;
-        this.openSnackBar();
+        this.openSnackBar(`The username or password are incorrect`);
         this.load = true;
       },
     });
   }
-  public openSnackBar() {
-    this._snackBar.open(`email o contraseña incorrectos`, 'Cerrar', {
+  public openSnackBar(msg: string) {
+    this._snackBar.open(msg, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });
   }
