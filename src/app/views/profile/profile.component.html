@@ -1,3 +1,4 @@
+<app-edit-profile *ngIf="edit" (close)="showEdit()"></app-edit-profile>
 <app-nav></app-nav>
 <div class="header__wrapper">
   <header></header>
@@ -36,8 +37,8 @@
           <li><a href="">Products</a></li>
         </ul>
         <div>
-          <button  class="btn btn-secondary">Edit</button>
-          <button  class="btn btn-danger">Log Out</button>
+          <button class="btn btn-secondary" (click)="showEdit()">Edit</button>
+          <button class="btn btn-danger" (click)="logOut()">Log Out</button>
         </div>
       </nav>
 
