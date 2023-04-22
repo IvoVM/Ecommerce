@@ -1,18 +1,26 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-
+type Product = {
+  title: string;
+  price: string;
+  description: string;
+  img: string;
+  category: string;
+  userIMG?: string;
+  userID?: string;
+  _id?: string;
+};
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AddCartService {
   public cartItemList: any = [];
   public productList = new BehaviorSubject<any>([]);
 
-
-  constructor() { }
+  constructor() {}
   getProducts() {
-    return this.productList.asObservable()
+    return this.productList.asObservable();
   }
 
   setProduct(product: any) {
@@ -22,36 +30,36 @@ export class AddCartService {
 
   addToCart(product: any) {
     if (this.cartItemList.includes(product)) {
-      this.cartItemList.map((a: any,index:number) => {
+      this.cartItemList.map((a: any, index: number) => {
         if (product._id === a._id) {
-          this.cartItemList[index].quantity = this.cartItemList[index].quantity + 1
+          this.cartItemList[index].quantity =
+            this.cartItemList[index].quantity + 1;
         }
-      })
+      });
     } else {
       this.cartItemList.push(product);
     }
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
-    console.log(this.cartItemList); 
+    console.log(this.cartItemList);
   }
   getTotalPrice(): number {
     let grandTotal = 0;
-    this.cartItemList.map((a: any) => {
-      grandTotal += parseInt(a.total ) * a.quantity;
-    })
+    this.cartItemList.map((products: Product) => {
+      grandTotal = parseInt(products.price);
+    });
     return grandTotal;
   }
-  deleteCartItem(product: any) {
-    this.cartItemList.map((a: any, index: any) => {
-      if (product._id === a._id) {
-        this.cartItemList.splice(index, 1)
+  deleteCartItem(product: Product) {
+    this.cartItemList.map((products: any, index: any) => {
+      if (product._id === products._id) {
+        this.cartItemList.splice(index, 1);
       }
-    })
+    });
     this.productList.next(this.cartItemList);
   }
   removeAllCart() {
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
-
 }
