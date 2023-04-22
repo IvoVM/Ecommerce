@@ -8,7 +8,7 @@ interface defaultResponse {
   message: string;
   status: number;
 }
-type Product = {
+export type Product = {
   title: string;
   price: string;
   description: string;
