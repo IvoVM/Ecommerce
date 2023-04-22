@@ -10,6 +10,7 @@ export class CardProfileComponent {
   constructor(private ProductsService: ProductsService) {}
   @Input() data?: any;
   @Output() reInit = new EventEmitter();
+  @Output() open = new EventEmitter();
 
   delete() {
     console.log('delete');
@@ -28,5 +29,9 @@ export class CardProfileComponent {
         },
       });
     }
+  }
+  openEditer(){
+    this.open.emit()
+
   }
 }

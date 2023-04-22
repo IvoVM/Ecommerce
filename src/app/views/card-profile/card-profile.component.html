@@ -1,10 +1,10 @@
 <mat-card class="example-card">
   <img mat-card-image [src]="data.img" alt="Profile img" />
   <mat-card-actions>
-    <button class="btn btn-warning">  
-      <i class='fa fa-edit'></i>
+    <button class="btn btn-warning" (click)="openEditer()">
+      <i class="fa fa-edit"></i>
     </button>
-    <button class="btn btn-danger float-right"  (click)="delete()">
+    <button class="btn btn-danger float-right" (click)="delete()">
       <i class="fa fa-trash"></i>
     </button>
   </mat-card-actions>
