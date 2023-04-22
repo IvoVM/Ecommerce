@@ -1,14 +1,20 @@
-<mat-card class="example-card">
+<mat-spinner *ngIf="load" diameter="40" class="spinner"></mat-spinner>
+
+<mat-card *ngIf="!load" class="example-card">
   <mat-card-header [routerLink]="['/detail-product', data._id]">
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar class="example-header-image" style=" background-image: url({{data.userIMG}})"></div>
     <mat-card-title>{{ data.title }}</mat-card-title>
     <mat-card-subtitle>{{ data.category }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [routerLink]="['/detail-product', data._id]" [src]="data.img" alt="Photo of a Shiba Inu" />
+  <img mat-card-image [routerLink]="['/detail-product', data._id]" [src]="data.img" alt="" />
   <mat-card-content [routerLink]="['/detail-product', data._id]">
+    <p class="text-success">
+      ${{ data.price }}
+    </p>
     <p>
       {{ data.description }}
     </p>
+    
   </mat-card-content>
   <mat-card-actions>
     <button (click)="addToCart(data)" class="btn btn-warning">
