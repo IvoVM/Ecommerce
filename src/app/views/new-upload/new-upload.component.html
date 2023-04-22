@@ -1,103 +1,102 @@
-<div class="containera">
-    <app-nav class="main-nav"></app-nav>
-    <div class="new-upload__container">
-      <div class="new-upload__uploadForm">
-        <h2>New Product</h2>
-        <p>This will be deleted when you close the application.</p>
-        <form class="uploadForm" [formGroup]="form">
-          <div class="uploadForm-field__container">
-            <div class="uploadForm-field">
-              <p>IMG by URL</p>
-              <input
-                type="url"
-                required
-                formControlName="productImg"
-                bindon-ngModel="productImg"
-              />
-            </div>
-            <div class="uploadForm-field">
-              <p>Title</p>
-              <input
-                type="text"
-                required
-                formControlName="productTitle"
-                bindon-ngModel="productTitle"
-              />
-            </div>
+<div style="background-color: rgb(230, 230, 230, 0.6)">
+  <app-nav></app-nav>
+  <div class="m-4 d-flex justify-content-evenly flex-wrap">
+    <div class="bg-white text-center p-4">
+      <h2 class="bg-success text-white">New Product</h2>
+      <form [formGroup]="form">
+        <div>
+          <div class="uploadForm-field">
+            <p>IMG by URL</p>
+            <input
+              type="url"
+              required
+              formControlName="productImg"
+              bindon-ngModel="productImg"
+              class="form-control"
+            />
           </div>
-  
-          <div class="uploadForm-field__container">
-            <div class="uploadForm-field">
-              <p>Categorie</p>
-              <select
-                formControlName="productCategory"
-                bindon-ngModel="productCategory"
-              >
-                <option>supermarket</option>
-                <option>technology</option>
-                <option>home and furnitures</option>
-                <option>clothes</option>
-              </select>
-            </div>
-            <div class="uploadForm-field uploadForm-field__price">
-              <p>Price</p>
-              <input
-                type="number"
-                required
-                formControlName="productPrice"
-                bindon-ngModel="productPrice"
-              />
-            </div>
-          </div>
-  
-          <div class="uploadForm-field uploadForm-field__description">
-            <p>Description</p>
-            <textarea
+          <div class="uploadForm-field">
+            <p>Title</p>
+            <input
               type="text"
               required
-              formControlName="productDescription"
-              bindon-ngModel="productDescription"
-              maxlength="50"
+              formControlName="productTitle"
+              bindon-ngModel="productTitle"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div class="uploadForm-field">
+            <p>Category</p>
+            <select
+              formControlName="productCategory"
+              bindon-ngModel="productCategory"
+              class="form-select"
+            >
+              <option>supermarket</option>
+              <option>technology</option>
+              <option>home and furnitures</option>
+              <option>clothes</option>
+            </select>
+          </div>
+          <div>
+            <p>Price</p>
+            <input
+              type="number"
               required
-              rows="3"
-              cols="10"
-            ></textarea>
+              formControlName="productPrice"
+              bindon-ngModel="productPrice"
+              class="form-control"
+            />
           </div>
-          <button class="uploadForm-btn" (click)="upload()">
-            Submit
-          </button>
-        </form>
-      </div>
-      <div class="complete-card">
-        <div class="product-card">
-          <div class="badge">New Product</div>
-          <div class="product-tumb">
-            <img src="{{ productImg }}" />
+        </div>
+
+        <div >
+          <p>Description</p>
+          <textarea
+            class="form-control"
+            type="text"
+            required
+            formControlName="productDescription"
+            bindon-ngModel="productDescription"
+            maxlength="50"
+            required
+            rows="3"
+            cols="10"
+          ></textarea>
+        </div>
+        <button class="btn btn-success mt-2" (click)="upload()">Submit</button>
+      </form>
+    </div>
+    <div>
+      <div class="product-card bg-white">
+        <div class="product-tumb d-flex justify-content-center align-items-center" >
+          <img src="{{ productImg }}" />
+        </div>
+        <div class="product-details">
+          <div style="display: flex; justify-content: space-between">
+            <span class="product-category mb-3">{{ productCategory }}</span>
+            <div class="product-links">
+              <a><i class="fa fa-shopping-cart"></i></a>
+            </div>
           </div>
-          <div class="product-details">
-            <div style="display: flex; justify-content: space-between">
-              <span class="product-category">{{ productCategory }}</span>
-              <div class="product-links">
-                <a><i class="fa fa-heart"></i></a>
-                <a><i class="fa fa-shopping-cart"></i></a>
-              </div>
+          <div style="display: flex; justify-content: space-between">
+            <h4>
+              <a >{{ productTitle }}</a>
+            </h4>
+            <div>
+              <small>${{ productPrice }}</small>
             </div>
-            <div style="display: flex; justify-content: space-between">
-              <h4>
-                <a class="product-details__title">{{ productTitle }}</a>
-              </h4>
-              <div class="product-price">
-                <small>${{ productPrice }}</small>
-              </div>
-            </div>
-            <div class="product-detail__invisible">
-              <p>{{ productDescription }}</p>
-              <div class="product-bottom__details"></div>
-            </div>
+          </div>
+          <div >
+            <p>{{ productDescription }}</p>
+            <div class="product-bottom__details"></div>
           </div>
         </div>
       </div>
     </div>
-    <app-footer></app-footer>
   </div>
-  
+  <app-footer></app-footer>
+</div>

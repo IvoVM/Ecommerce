@@ -43,7 +43,7 @@
       </nav>
 
       <div class="photos">
-        <app-card-profile (reInit)="reloadPage()" [data]="userCard" *ngFor="let userCard of userCards"></app-card-profile>
+        <app-card-profile (reInit)="reloadPage()" (open)="openEditor()" [data]="userCard" *ngFor="let userCard of userCards"></app-card-profile>
       </div>
     </div>
   </div>

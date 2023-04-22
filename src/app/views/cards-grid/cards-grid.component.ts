@@ -28,6 +28,7 @@ export class CardsGridComponent implements OnDestroy {
   public getAllProducts(): void {
     this.postSubscription = this.productsService.getAll().subscribe((data) => {
       this.merchCards = data;
+      this.merchCards = this.merchCards.reverse()
     });
   }
 

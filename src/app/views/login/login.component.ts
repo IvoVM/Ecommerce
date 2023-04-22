@@ -1,4 +1,7 @@
-import { AuthenticationService } from './../../services/authentication.service';
+import {
+  AuthenticationService,
+  User,
+} from './../../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,7 +26,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private cookieSvc:CookieService
+    private cookieSvc: CookieService
   ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -39,14 +42,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.load = false;
     this.errorMessage = null;
-    const body = {
+    const body: User = {
       username: this.form.value.username,
       password: this.form.value.password,
     };
     this.authenticationService.login(body).subscribe({
       next: (res) => {
         console.log(res);
-        this.cookieSvc.set('token',res.token)
+        this.cookieSvc.set('token', res.token);
         this.authenticationService.getLoggedInUser();
         this.router.navigateByUrl('');
       },
@@ -57,7 +60,7 @@ export class LoginComponent implements OnInit {
       },
     });
   }
-   openSnackBar(msg: string) {
+  openSnackBar(msg: string) {
     this._snackBar.open(msg, 'Cerrar', {
       duration: this.snackbarDurationInSeconds * 1000,
     });

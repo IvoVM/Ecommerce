@@ -29,6 +29,7 @@ import { NewUploadComponent } from './views/new-upload/new-upload.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { CategoryComponent } from './views/category/category.component';
 import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
+import { CardProfileComponent } from './views/card-profile/card-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EditProfileComponent } from './views/edit-profile/edit-profile.componen
     ProfileComponent,
     CategoryComponent,
     EditProfileComponent,
+    CardProfileComponent,
   ],
   imports: [
     BrowserModule,
