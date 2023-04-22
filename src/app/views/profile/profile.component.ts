@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
   };
   userCards!:Array<Product>;
   edit = false;
+  cardEditor = false;
 
   constructor(
     private AuthenticationService: AuthenticationService,
@@ -55,6 +56,9 @@ export class ProfileComponent implements OnInit {
   logOut() {
     this.CookieService.delete('token')
     this.router.navigateByUrl('');
+  }
+  openEditor(){
+    this.cardEditor = !this.cardEditor
   }
   // public deleteProduct(): void {
   //   this.productSvc.delete(this.data._id).subscribe();
