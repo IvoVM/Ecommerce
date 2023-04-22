@@ -1,0 +1,63 @@
+<div class="overlay">
+  <div class="bg-white shadow rounded-lg d-block d-sm-flex m-5">
+    <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="account"
+        role="tabpanel"
+        aria-labelledby="account-tab"
+      >
+        <h3 class="mb-4">Card data</h3>
+        <Form class="row" [formGroup]="form">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Image's URL</label>
+              <input type="text" class="form-control" formControlName="img" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control" formControlName="title" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Price</label>
+              <input type="text" class="form-control" formControlName="price" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Category</label>
+              <select formControlName="category" class="form-select">
+                <option>supermarket</option>
+                <option>technology</option>
+                <option>home and furnitures</option>
+                <option>clothes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea
+                formControlName="description"
+                class="form-control"
+                rows="4"
+                >{{ data.description }}</textarea
+              >
+            </div>
+          </div>
+        </Form>
+        <div>
+          <button class="btn btn-primary" (click)="update()">Update</button>
+          <button class="btn btn-danger m-2" (click)="closeEdit()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
