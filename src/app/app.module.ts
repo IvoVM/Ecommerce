@@ -19,7 +19,7 @@ import { MainComponent } from './modules/public/layout/main/main.component';
 import { PersonalCartComponent } from './modules/private/cart/personal-cart/personal-cart.component';
 import { CategoriesListComponent } from './modules/public/layout/categories-list/categories-list.component';
 import { InterceptorService } from './services/interceptor.service';
-import { LoadingScreenComponent } from './views/loading-screen/loading-screen.component';
+import { LoadingScreenComponent } from './modules/public/layout/loading-screen/loading-screen.component';
 import { FooterComponent } from './modules/public/layout/footer/footer.component';
 import { CardsGridComponent } from './modules/public/cards/cards-grid/cards-grid.component';
 import { DetailProductComponent } from './modules/public/cards/detail-product/detail-product.component';
