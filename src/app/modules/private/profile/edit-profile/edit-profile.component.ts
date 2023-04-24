@@ -34,7 +34,7 @@ export class EditProfileComponent implements OnInit {
 
   update() {
     this.load = true;
-    let body:any = {
+    let body: any = {
       username: this.form.value.username || this.data.username,
       img: this.form.value.img || this.data.img,
       description: this.form.value.description || this.data.description,
@@ -43,25 +43,23 @@ export class EditProfileComponent implements OnInit {
     this.authenticationService.update(body).subscribe({
       next: (res) => {
         this.openSnackBar('Updated profile');
-        console.log('ok',res);
+        console.log('ok', res);
         this.load = false;
         this.reloadPage();
-        this.closeEdit()
-
+        this.closeEdit();
       },
       error: (err) => {
-        this.reloadPage();
-        this.openSnackBar('Updated profile');
+        this.openSnackBar('Error al intentar cargar la data ');
         this.load = false;
-        console.log('err',err);
-        this.closeEdit()
+        console.log('err', err);
+        this.closeEdit();
       },
     });
   }
   closeEdit() {
     this.close.emit();
   }
-  reloadPage(){
+  reloadPage() {
     this.reInit.emit();
   }
   openSnackBar(msg: string) {

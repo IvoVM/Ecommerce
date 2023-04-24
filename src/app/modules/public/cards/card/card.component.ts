@@ -1,4 +1,4 @@
-import { AddCartService } from './../../services/add-cart.service';
+import { AddCartService } from '../../../../services/add-cart.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

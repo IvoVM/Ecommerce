@@ -1,4 +1,4 @@
-import { AddCartService } from './../../services/add-cart.service';
+import { AddCartService } from '../../../../services/add-cart.service';
 import { Component, OnInit } from '@angular/core';
 
 type Product = {

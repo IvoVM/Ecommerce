@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../../../services/authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../../services/products.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

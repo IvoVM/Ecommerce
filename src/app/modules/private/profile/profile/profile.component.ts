@@ -1,6 +1,6 @@
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '../../../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 

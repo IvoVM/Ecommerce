@@ -1,15 +1,15 @@
 import { VigilanteGuard } from './guards/vigilante.guard';
-import { DetailProductComponent } from './views/detail-product/detail-product.component';
-import { PersonalCartComponent } from './views/personal-cart/personal-cart.component';
-import { NewUploadComponent } from './views/new-upload/new-upload.component';
-import { MainComponent } from './views/main/main.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { DetailProductComponent } from './modules/public/cards/detail-product/detail-product.component';
+import { PersonalCartComponent } from './modules/private/cart/personal-cart/personal-cart.component';
+import { NewUploadComponent } from './modules/private/upload-product/new-upload/new-upload.component';
+import { MainComponent } from './modules/public/layout/main/main.component';
+import { LoginComponent } from './modules/public/authentication/login/login.component';
+import { RegisterComponent } from './modules/public/authentication/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfileComponent } from './views/profile/profile.component';
+import { ProfileComponent } from './modules/private/profile/profile/profile.component';
 import {  DetailProductResolverService } from './resolvers/detail-product.resolver';
-import { CategoryComponent } from './views/category/category.component';
+import { CategoryComponent } from './modules/public/layout/category/category.component';
 
 const routes: Routes = [
   {
