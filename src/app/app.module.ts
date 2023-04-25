@@ -17,9 +17,7 @@ import {
 import { RegisterComponent } from './modules/public/authentication/register/register.component';
 import { MainComponent } from './modules/public/layout/main/main.component';
 import { PersonalCartComponent } from './modules/private/cart/personal-cart/personal-cart.component';
-import { CategoriesListComponent } from './modules/public/layout/categories-list/categories-list.component';
 import { InterceptorService } from './services/interceptor.service';
-import { LoadingScreenComponent } from './modules/public/layout/loading-screen/loading-screen.component';
 import { FooterComponent } from './modules/public/layout/footer/footer.component';
 import { CardsGridComponent } from './modules/public/cards/cards-grid/cards-grid.component';
 import { DetailProductComponent } from './modules/public/cards/detail-product/detail-product.component';
@@ -27,9 +25,11 @@ import { NavComponent } from './modules/public/layout/nav/nav.component';
 import { CardComponent } from './modules/public/cards/card/card.component';
 import { NewUploadComponent } from './modules/private/upload-product/new-upload/new-upload.component';
 import { ProfileComponent } from './modules/private/profile/profile/profile.component';
-import { CategoryComponent } from './modules/public/layout/category/category.component';
 import { EditProfileComponent } from './modules/private/profile/edit-profile/edit-profile.component';
 import { CardProfileComponent } from './modules/private/profile/card-profile/card-profile.component';
+import { CategoryComponent } from './modules/public/layout/category/category.component';
+import { CategoriesListComponent } from './modules/public/layout/categories-list/categories-list.component';
+import { LoadingScreenComponent } from './modules/public/layout/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [

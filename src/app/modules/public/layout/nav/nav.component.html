@@ -4,20 +4,20 @@
   <span class="fill-remaining-space"></span>
   <ul class="navBrand-menu">
     <li
-      [routerLink]="['/profile']"
+      [routerLink]="['/private/profile']"
       routerLinkActive="router-link-active"
       class="nav-item"
     >
       <i class="fas fa-user-cog" style="color: white"></i>
     </li>
     <li
-      [routerLink]="['/upload']"
+      [routerLink]="['/private/upload']"
       routerLinkActive="router-link-active"
       class="nav-item"
     >
       <i class="fa fa-cloud-upload"></i>
     </li>
-    <li class="nav-item" [routerLink]="['/cart']">
+    <li class="nav-item" [routerLink]="['/private/cart']">
       <i class="fa-solid fa-cart-shopping nav-link"></i>
       <div class="badge bg-danger" style="font-size: 10px">
         {{cartItems}}
